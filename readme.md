@@ -3,11 +3,18 @@
 ### Windows
 
 Use the ```VsDevCmd.bat``` with ```-arch=x64```.
-	
-	git submodule init
-	git submodule update
-    mkdir build
-    cd build
-    cmake -G "NMake Makefiles" ..
-    nmake
 
+    git clone --recursive -j8 https://github.com/marcgpuig/Andes.git
+    cd Andes && mkdir build && cd build
+    cmake -G "NMake Makefiles" ..
+    nmake && .\Andes.exe
+
+*-j8 will only work with version 1.9 or later of Git*
+
+If you already cloned the repo:
+
+    cd Andes
+    git submodule update --init --recursive
+    mkdir build && cd build
+    cmake -G "NMake Makefiles" ..
+    nmake && .\Andes.exe
