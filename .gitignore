@@ -1,4 +1,7 @@
 /build/
+/Win32/
+/vsBuild/
+/bin/
 /lib/glfw
 /lib/glm
 /*.dir/
