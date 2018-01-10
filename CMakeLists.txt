@@ -2,6 +2,9 @@
 cmake_minimum_required(VERSION 3.1)
 project(Andes)
 
+# Don't genmerate ZERO_CHECK
+set(CMAKE_SUPPRESS_REGENERATION ON)
+
 # Source directorioes and files
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
@@ -55,3 +58,8 @@ set(GLM_DIR "${LIB_DIR}/glm")
 add_subdirectory("${GLM_DIR}")
 target_link_libraries(${PROJECT_NAME} "glm")
 target_include_directories(${PROJECT_NAME} PRIVATE "${GLM_DIR}/glm")
+
+if (MSVC) # If is compiling for Visual Studio
+	# Set ${PROJECT_NAME} as the starting project
+	set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+endif()
